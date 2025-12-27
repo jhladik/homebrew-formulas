@@ -10,16 +10,21 @@ class Nextpnr < Formula
   depends_on "eigen"
   depends_on "python"
   depends_on "boost"
-  depends_on "boost-system"
   depends_on "boost-python3"
   depends_on "qt@5"
   depends_on "icestorm"
 
-  def install
-    system "cmake", "-S", ".", "-B", "build", "-DARCH=ice40", "-DBUILD_TESTS=OFF", "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox", *std_cmake_args
-    system "cmake", "--build", "build"
-    system "cmake", "--install", "build"
-  end
+def install
+  system "cmake", "-S", ".", "-B", "build",
+    "-DARCH=ice40",
+    "-DBUILD_GUI=ON",
+    "-DBUILD_TESTS=OFF",
+    "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox",
+    "-DBoost_NO_BOOST_CMAKE=ON",
+    *std_cmake_args
+  system "cmake", "--build", "build"
+  system "cmake", "--install", "build"
+end
 
   test do
     system bin/"nextpnr-ice40", "--version"
