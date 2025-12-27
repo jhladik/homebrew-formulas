@@ -21,9 +21,8 @@ def install
     "-DBUILD_TESTS=OFF",
     "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox",
     "-DBoost_NO_BOOST_CMAKE=ON",
-    "-DBoost_USE_MULTITHREADED=ON",
-    "-DBoost_DEBUG=ON",
-    "-DBOOST_LIBRARYDIR=#{HOMEBREW_PREFIX}/lib",
+    "-DBOOST_INCLUDEDIR=#{HOMEBREW_PREFIX}/include",  # Helps header search
+    "-DBOOST_LIBRARYDIR=#{HOMEBREW_PREFIX}/lib",      # Points to -mt libs
     *std_cmake_args
   system "cmake", "--build", "build"
   system "cmake", "--install", "build"
