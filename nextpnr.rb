@@ -15,13 +15,7 @@ class Nextpnr < Formula
   depends_on "icestorm"
 
 def install
-  system "cmake", "-S", ".", "-B", "build",
-    "-DARCH=ice40",
-    "-DBUILD_GUI=ON",
-    "-DBUILD_TESTS=OFF",
-    "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox",
-    "-DBOOST_INCLUDEDIR=#{HOMEBREW_PREFIX}/include",  # Helps header search
-    "-DBOOST_LIBRARYDIR=#{HOMEBREW_PREFIX}/lib",      # Points to -mt libs
+  system "cmake", "-DARCH=ice40", "-DBUILD_GUI=ON", ".", *std_cmake_args, "-DBoost_NO_BOOST_CMAKE=on", "-DBUILD_TESTS=OFF", "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox"
     *std_cmake_args
   system "cmake", "--build", "build"
   system "cmake", "--install", "build"
