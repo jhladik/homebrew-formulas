@@ -10,6 +10,7 @@ class Nextpnr < Formula
   depends_on "eigen"
   depends_on "python"
   depends_on "boost"
+  depends_on "boost-system"
   depends_on "boost-python3"
   depends_on "qt@5"
   depends_on "icestorm"
