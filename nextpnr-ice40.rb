@@ -13,7 +13,7 @@ class NextpnrIce40 < Formula
     system "cmake", "-S", ".", "-B", "build",
       "-DARCH=ice40",
       "-DBUILD_TESTS=OFF",
-      "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox",
+      "-DICESTORM_INSTALL_PREFIX=#{Formula["icestorm"].opt_prefix}",
       *std_cmake_args
 
     system "cmake", "--build", "build"
