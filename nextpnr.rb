@@ -21,6 +21,7 @@ def install
     "-DBUILD_TESTS=OFF",
     "-DICEBOX_ROOT=#{HOMEBREW_PREFIX}/share/icebox",
     "-DBoost_NO_BOOST_CMAKE=ON",
+    "-DBoost_USE_MULTITHREADED=ON",
     *std_cmake_args
   system "cmake", "--build", "build"
   system "cmake", "--install", "build"
