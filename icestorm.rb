@@ -8,7 +8,8 @@ class Icestorm < Formula
   sha256 "928dd541d15540a796a3d320122794d8d76acff90783de8c5747f613e474652f"
   license "ISC"
 
-  depends_on "libftdi0"
+  depends_on "pkg-config" => :build
+  depends_on "libftdi"
   depends_on "python"
 
   # depends_on "cmake" => :build
